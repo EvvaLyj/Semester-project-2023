@@ -1,3 +1,12 @@
+import numpy as np
+import math
+
+def array(num_elements,dim,x_start):
+    lin_array=np.zeros((num_elements,2))
+    lin_array[:,0]=[i for i in np.linspace(x_start,x_start+dim,num_elements)]#y_axis
+    lin_array[:,1]=[ 0 for _ in range(num_elements)]#x_axis
+    return lin_array
+
 def Calcphases(measurements,array,lmb,Phase_0):
     # n: number of antenna elements
     # Setsize: Length of trajectory
@@ -16,6 +25,8 @@ def Calcphases(measurements,array,lmb,Phase_0):
             distancetoantenna = np.linalg.norm(measurements-array[j].numpy())
             phases[0,j] = (distancetoantenna * 4*math.pi/lmb + Phase_0) % (2*math.pi)
     return phases
+
+
 def GenerateTraj(Length,dt,X0,H,F,Q,R):
 
     real_state = []
