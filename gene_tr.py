@@ -1,5 +1,6 @@
 import numpy as np
 import math
+from numpy.random import randn 
 
 def array(num_elements,dim,x_start):
     lin_array=np.zeros((num_elements,2))
@@ -7,45 +8,45 @@ def array(num_elements,dim,x_start):
     lin_array[:,1]=[ 0 for _ in range(num_elements)]#x_axis
     return lin_array
 
-def Calcphases(measurements,array,lmb,Phase_0):
-    # n: number of antenna elements
-    # Setsize: Length of trajectory
-    n =array.shape[0]
-    length=len(measurements)
-    phases = np.zeros((length, n))
+def Calcphases(states,array,lmb,Phase_0,phase_noise_std):
+    #give the location of target, calculate the phases 
+    # N: number of antenna elements
+    # length: Length of trajectory
+    N = array.shape[0]
+    length=len(states)
+    phases = np.zeros((length, N))
     
     if length > 1:
          for i in range(length):
-            for j in range(n):
-                distancetoantenna = np.linalg.norm(measurements[i]-array[j])
-                phases[i, j] = (distancetoantenna * 4*math.pi/lmb + Phase_0) % (2*math.pi)
+            for j in range(N):
+                distancetoantenna = np.linalg.norm(states[i]-array[j])
+                phases[i, j] = (distancetoantenna * 4*math.pi/lmb + Phase_0+randn(1)*phase_noise_std) % (2*math.pi)
     if length == 1:
-        phases = np.zeros(1,n)
-        for j in range(n):
-            distancetoantenna = np.linalg.norm(measurements-array[j].numpy())
-            phases[0,j] = (distancetoantenna * 4*math.pi/lmb + Phase_0) % (2*math.pi)
+        phases = np.zeros(1,N)
+        for j in range(N):
+            distancetoantenna = np.linalg.norm(states-array[j].numpy())
+            phases[0,j] = (distancetoantenna * 4*math.pi/lmb + Phase_0+randn(1)*phase_noise_std) % (2*math.pi)
+    
     return phases
 
 
 def GenerateTraj(Length,dt,X0,H,F,Q,R):
-
-    real_state = []
-    measurements = []
+    #state x=[px,vx,py,vy]
+    #dynamics: Length, dt, X0, H,F,Q,R
+    
+    real_states = []
+    position_measurements = []
     #process(motion) model 
     #observation model
     x = X0
     for i in range(Length):
-        real_state.append(x)
+        real_states.append(x)
         x = np.dot(F,x)+np.random.multivariate_normal(mean=(0,0,0,0),cov=Q).reshape(4,1)
-        measurements.append(np.array(x[0:2,:]+np.random.multivariate_normal(mean=(0,0),cov=R).reshape(2,1)))
-    measurements = np.array(measurements).squeeze()
-    real_state = np.array(real_state)
-    lmb=2e-3
-    #array of antennas
-    N=10 # number of elements
-    d=0.25*lmb # distance between 2 adjacent elements
-    arr_dim=d*(N-1) # dimension of the array
-    arr=array(N,arr_dim,0) # array elements location
-    #
-    Phases = Calcphases(measurements, arr,lmb,0)
-    return real_state,measurements,Phases
+        position_measurements.append(np.array(np.dot(H,x)+np.random.multivariate_normal(mean=(0,0),cov=R).reshape(2,1)))
+    position_measurements = np.array(position_measurements).squeeze()
+    real_states = np.array(real_states)
+
+
+    return real_states,position_measurements
+
+

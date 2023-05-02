@@ -5,16 +5,26 @@ import seaborn as sns
 
 
 
-
 class ML:
-    def ML_grid(self,xrange,yrange,phase_obs,arr,lamb,resolution,flag_plot=True):
+    def ML_grid(self,xrange,yrange,phase_obs,arr,lamb,resolution,flag_prior,flag_plot=True):
         N=arr.shape[0]
 
-        num_grid_x=int(np.floor((xrange[1]-xrange[0])/resolution))+1
-        num_grid_y=int(np.floor((yrange[1]-yrange[0])/resolution))+1
 
-        grid_x, step_x=np.linspace(xrange[0],xrange[1],num_grid_x,retstep=True)
-        grid_y, step_y=np.linspace(yrange[0],yrange[1],num_grid_y,retstep=True)
+        if(flag_prior == False):
+            num_grid_x=int(np.floor((xrange[1]-xrange[0])/resolution))+1
+            num_grid_y=int(np.floor((yrange[1]-yrange[0])/resolution))+1
+            grid_x=np.linspace(xrange[0],xrange[0]+(num_grid_x-1)*resolution,num_grid_x)
+            grid_y=np.linspace(yrange[0],yrange[0]+(num_grid_y-1)*resolution,num_grid_y)
+        else:
+            diameter=xrange[1]-xrange[0]
+            new_left_bound=xrange[0]+0.5*diameter-0.25*np.sqrt(2)*diameter
+            new_right_bound=xrange[0]+0.5*diameter+0.25*np.sqrt(2)*diameter
+            new_upper_bound=yrange[0]+0.5*diameter+0.25*np.sqrt(2)*diameter
+            new_lower_bound=yrange[0]+0.5*diameter-0.25*np.sqrt(2)*diameter
+            num_grid_x=int(np.floor((new_right_bound-new_left_bound)/resolution))+1
+            num_grid_y=int(np.floor((new_upper_bound-new_lower_bound)/resolution))+1
+            grid_x=np.linspace(new_left_bound,new_left_bound+(num_grid_x-1)*resolution,num_grid_x)
+            grid_y=np.linspace(new_lower_bound,new_lower_bound+(num_grid_y-1)*resolution,num_grid_y)
 
         objective_values=np.zeros((num_grid_x,num_grid_y))
         for i in range(num_grid_x):

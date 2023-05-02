@@ -11,6 +11,15 @@ def todB(x):
 
 
 def evaluate(true_target,estimate_target):
-    squared_loss=((true_target - estimate_target)**2).mean()
-    std=np.std(estimate_target,axis=1).mean(axis=0)
-    return todB(squared_loss),std
+    
+    M = true_target.shape[2] #dim of output
+    N = true_target.shape[1] #number of samples per test / Length of trajectories
+    L = true_target.shape[0] #numner of tests(targets,trajectories)
+    MSE = np.zeros(L)
+    for i in range(L):
+        error=true_target[i,:,:]-estimate_target[i,:,:]
+        squared_error =np.linalg.norm(error,axis=1)**2 # taking norm of each row 
+        MSE[i] = np.sum(squared_error)/(M*N)
+    MSE_mean = np.mean(MSE)
+    MSE_std = np.std(MSE)
+    return MSE_mean,MSE_std
