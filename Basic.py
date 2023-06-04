@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 def array(num_elements,dim,x_start):
     lin_array=np.zeros((num_elements,2))
@@ -20,3 +21,19 @@ def sample_in_half_circle(R,N):
             samples[count]=np.array([x,y]).reshape(2,)
             count+=1
     return samples
+
+# def Noise_scaledB_to_linear(noise_scale_dB,lmb):
+#     noise_std_linear=np.empty(len(noise_scale_dB))
+#     for i in range(len(noise_scale_dB)):
+#         noise_std_linear[i] = math.pow(10,(-noise_scale_dB[i]/20))/lmb
+#     return noise_std_linear
+
+def Noise_dB_to_std(noise_dB):
+    noise_std=np.empty(len(noise_dB))
+    for i in range(len(noise_dB)):
+        noise_std[i]=math.pow(10,-noise_dB[i]/20)
+    return noise_std
+
+def Single_Noise_dB_to_std(noise_dB):
+    noise_std=math.pow(10,-noise_dB/20)
+    return noise_std

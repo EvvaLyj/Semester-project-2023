@@ -11,10 +11,10 @@ def todB(x):
 
 
 def evaluate(true_target,estimate_target):
-    
-    M = true_target.shape[2] #dim of output
-    N = true_target.shape[1] #number of samples per test / Length of trajectories
+    #input targets size: L*M*N
     L = true_target.shape[0] #numner of tests(targets,trajectories)
+    N = true_target.shape[1] #number of samples per test / Length of trajectories
+    M = true_target.shape[2] #target dimension
     MSE = np.zeros(L)
     for i in range(L):
         error=true_target[i,:,:]-estimate_target[i,:,:]

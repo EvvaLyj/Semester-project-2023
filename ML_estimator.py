@@ -9,7 +9,6 @@ class ML:
     def ML_grid(self,xrange,yrange,phase_obs,arr,lamb,resolution,flag_prior,flag_plot=True):
         N=arr.shape[0]
 
-
         if(flag_prior == False):
             num_grid_x=int(np.floor((xrange[1]-xrange[0])/resolution))+1
             num_grid_y=int(np.floor((yrange[1]-yrange[0])/resolution))+1
