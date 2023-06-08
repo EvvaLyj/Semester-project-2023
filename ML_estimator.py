@@ -56,12 +56,12 @@ class ML:
             plt.ylabel('y')
 
             plt.scatter(a,b,c="red")
-            plt.title(f'Grid searching result with resolution= {resolution/lamb}wavelength')
+            plt.title(f'Grid searching result with '+r'$s_{grid}$'+f'= {resolution/lamb}'+r'$\lambda$')
         
         loc=loc.reshape([-1,2])
         return np.array([num_grid_x,num_grid_y]),loc
     
-    def ML_grid2(self,xrange,yrange,phase_obs,arr,lamb,resolution,num_ite,flag_plot=True):
+    def ML_grid2(self,xrange,yrange,phase_obs,arr,lamb,resolution,num_ite, reso_factor, filepath,flag_plot=True):
         N=arr.shape[0]
         #hierarchical grid searching
         reso=resolution
@@ -72,12 +72,10 @@ class ML:
         locs=[]
         
         for k in range(num_ite):
-            
+            # print(f'Iteration {k+1}.')
             num_grid_x=int(np.floor((search_right_bound-search_left_bound)/reso))
             num_grid_y=int(np.floor((search_upper_bound-search_lower_bound)/reso))
-
-#             print(num_grid_x,num_grid_y)
-            
+            # print(num_grid_x,num_grid_y)
             
             grid_x=np.arange(search_left_bound+0.5*reso,search_left_bound+(num_grid_x)*reso,reso)
             grid_y=np.arange(search_lower_bound+0.5*reso,search_lower_bound+(num_grid_y)*reso,reso)
@@ -110,11 +108,11 @@ class ML:
                 plt.xlabel('x')
                 plt.ylabel('y')
 
-                plt.text(a+0.5,b+0.5,'target',c="red",ha='center',va='center')
+                plt.text(a+0.5,b+0.5,'G',c="red",ha='center',va='center')
                 ax.add_patch(plt.Rectangle((a-2,b-2), 5,5, color="blue", fill=False, linewidth=1))
-                plt.title(f'Searching result with resolution= {reso/lamb}wavelength,ite={k+1}')
+                plt.title(r'Searching result with $s_{grid}$' +rf'= {reso/lamb}$\lambda$,ite={k+1}')
 
-#                 plt.savefig(f'C:/Users/73160/OneDrive/项目/project/Weekly reports/Sp_4/ML2_Result_{k+1}.png')
+                plt.savefig(filepath+f'/hierarchical_ML_Example_Result_{k+1}.png')
             
             #increase the resolution and search within the best grid
             
@@ -122,7 +120,7 @@ class ML:
             search_right_bound=min(loc[0]+reso*2.5,search_right_bound)
             search_lower_bound=max(loc[1]-reso*2.5,search_lower_bound)
             search_upper_bound=min(loc[1]+reso*2.5,search_upper_bound)
-            reso=0.25*reso
+            reso=reso_factor*reso
 #             print(reso,search_left_bound,search_right_bound,search_lower_bound,search_upper_bound)
             
         locs=locs.reshape([-1,2])
