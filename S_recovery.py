@@ -1,3 +1,10 @@
+"""
+S_recovery.py
+
+Unwrapping algorithm and sparse recovery.  
+
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import OrthogonalMatchingPursuit

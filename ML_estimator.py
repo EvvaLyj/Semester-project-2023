@@ -1,29 +1,38 @@
+"""
+ML_estimator.py
+
+There is an ML class containing 2 ML estimators.
+1. ML + grid search with prior information.
+2. ML + hierarchical grid search.
+
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
 
-
 class ML:
     def ML_grid(self,xrange,yrange,phase_obs,arr,lamb,resolution,flag_prior,flag_plot=True):
+        
         N=arr.shape[0]
 
-        if(flag_prior == False):
-            num_grid_x=int(np.floor((xrange[1]-xrange[0])/resolution))+1
-            num_grid_y=int(np.floor((yrange[1]-yrange[0])/resolution))+1
-            grid_x=np.linspace(xrange[0],xrange[0]+(num_grid_x-1)*resolution,num_grid_x)
-            grid_y=np.linspace(yrange[0],yrange[0]+(num_grid_y-1)*resolution,num_grid_y)
-        else:
-            diameter=xrange[1]-xrange[0]
-            new_left_bound=xrange[0]+0.5*diameter-0.25*np.sqrt(2)*diameter
-            new_right_bound=xrange[0]+0.5*diameter+0.25*np.sqrt(2)*diameter
-            new_upper_bound=yrange[0]+0.5*diameter+0.25*np.sqrt(2)*diameter
-            new_lower_bound=yrange[0]+0.5*diameter-0.25*np.sqrt(2)*diameter
-            num_grid_x=int(np.floor((new_right_bound-new_left_bound)/resolution))+1
-            num_grid_y=int(np.floor((new_upper_bound-new_lower_bound)/resolution))+1
-            grid_x=np.linspace(new_left_bound,new_left_bound+(num_grid_x-1)*resolution,num_grid_x)
-            grid_y=np.linspace(new_lower_bound,new_lower_bound+(num_grid_y-1)*resolution,num_grid_y)
+        # if(flag_prior == False):
+        num_grid_x=int(np.floor((xrange[1]-xrange[0])/resolution))+1
+        num_grid_y=int(np.floor((yrange[1]-yrange[0])/resolution))+1
+        grid_x=np.linspace(xrange[0],xrange[0]+(num_grid_x-1)*resolution,num_grid_x)
+        grid_y=np.linspace(yrange[0],yrange[0]+(num_grid_y-1)*resolution,num_grid_y)
+        # else:
+        #     diameter=xrange[1]-xrange[0]
+        #     new_left_bound=xrange[0]+0.5*diameter-0.25*np.sqrt(2)*diameter
+        #     new_right_bound=xrange[0]+0.5*diameter+0.25*np.sqrt(2)*diameter
+        #     new_upper_bound=yrange[0]+0.5*diameter+0.25*np.sqrt(2)*diameter
+        #     new_lower_bound=yrange[0]+0.5*diameter-0.25*np.sqrt(2)*diameter
+        #     num_grid_x=int(np.floor((new_right_bound-new_left_bound)/resolution))+1
+        #     num_grid_y=int(np.floor((new_upper_bound-new_lower_bound)/resolution))+1
+        #     grid_x=np.linspace(new_left_bound,new_left_bound+(num_grid_x-1)*resolution,num_grid_x)
+        #     grid_y=np.linspace(new_lower_bound,new_lower_bound+(num_grid_y-1)*resolution,num_grid_y)
 
         objective_values=np.zeros((num_grid_x,num_grid_y))
         for i in range(num_grid_x):
@@ -62,8 +71,10 @@ class ML:
         return np.array([num_grid_x,num_grid_y]),loc
     
     def ML_grid2(self,xrange,yrange,phase_obs,arr,lamb,resolution,num_ite, reso_factor, filepath,flag_plot=True):
+        
         N=arr.shape[0]
-        #hierarchical grid searching
+
+        #hierarchical grid search
         reso=resolution
         search_left_bound=xrange[0]
         search_right_bound=xrange[1]
