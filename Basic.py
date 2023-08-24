@@ -1,7 +1,7 @@
 """
 Basic.py
 
-Here are some basic functions used in this poject.
+Here are some basic functions used in this project.
 """
 
 import numpy as np

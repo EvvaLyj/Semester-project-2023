@@ -1,3 +1,8 @@
+"""
+gene_tr.py
+
+This is a file generating the trajectories and measurements.
+"""
 import numpy as np
 import math
 from numpy.random import randn 
