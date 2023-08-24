@@ -75,7 +75,7 @@ def KF_ML(Length,dt,x0,P0,F,H,Q,R,lmb,ml_resol,std,arr,Phases,search_factor):
        
         y_k=Phases[i,:]
         ml=ML()
-        num_grid,Loc_MLgrid=ml.ML_grid(xrange,yrange,y_k,arr,lmb,resolution=ml_resol,flag_prior=False,flag_plot=False)
+        num_grid,Loc_MLgrid=ml.ML_grid(xrange,yrange,y_k,arr,lmb,resolution=ml_resol,flag = False,flag_plot=False)
         z_k_list.append(Loc_MLgrid.reshape(2,1)) #z_k
         z =Loc_MLgrid.reshape(2,1)
     
@@ -125,7 +125,7 @@ def KF_ML_ite(Length,dt,x0,P0,F,H,Q,R,lmb,ml_resol,std,arr,Phases,search_factor)
             
                 y_k=Phases[i,:]
                 ml=ML()
-                num_grid,Loc_MLgrid=ml.ML_grid(xrange,yrange,y_k,arr,lmb,resolution=ml_resol,flag_prior=False,flag_plot=False)
+                num_grid,Loc_MLgrid=ml.ML_grid(xrange,yrange,y_k,arr,lmb,resolution=ml_resol,flag = False,flag_plot=False)
                 z = Loc_MLgrid.reshape(2,1)
                 print(f'ite{j},z={z}')
                 #update
@@ -142,7 +142,7 @@ def KF_ML_ite(Length,dt,x0,P0,F,H,Q,R,lmb,ml_resol,std,arr,Phases,search_factor)
             
                 y_k=Phases[i,:]
                 ml=ML()
-                num_grid,Loc_MLgrid=ml.ML_grid(xrange,yrange,y_k,arr,lmb,resolution=ml_resol,flag_prior=False,flag_plot=False)
+                num_grid,Loc_MLgrid=ml.ML_grid(xrange,yrange,y_k,arr,lmb,resolution=ml_resol,flag = False,flag_plot=False)
                 z = Loc_MLgrid.reshape(2,1)
                 print(f'ite{j},z={z}')
                 #update

@@ -14,15 +14,16 @@ import seaborn as sns
 
 
 class ML:
-    def ML_grid(self,xrange,yrange,phase_obs,arr,lamb,resolution,flag_prior,flag_plot=True):
+    #ML + grid search with prior
+    def ML_grid(self,xrange,yrange,phase_obs,arr,lamb,resolution,flag,flag_plot=True):
         
         N=arr.shape[0]
 
-        # if(flag_prior == False):
-        num_grid_x=int(np.floor((xrange[1]-xrange[0])/resolution))+1
-        num_grid_y=int(np.floor((yrange[1]-yrange[0])/resolution))+1
-        grid_x=np.linspace(xrange[0],xrange[0]+(num_grid_x-1)*resolution,num_grid_x)
-        grid_y=np.linspace(yrange[0],yrange[0]+(num_grid_y-1)*resolution,num_grid_y)
+        if(flag == False):
+            num_grid_x=int(np.floor((xrange[1]-xrange[0])/resolution))+1
+            num_grid_y=int(np.floor((yrange[1]-yrange[0])/resolution))+1
+            grid_x=np.linspace(xrange[0],xrange[0]+(num_grid_x-1)*resolution,num_grid_x)
+            grid_y=np.linspace(yrange[0],yrange[0]+(num_grid_y-1)*resolution,num_grid_y)
         # else:
         #     diameter=xrange[1]-xrange[0]
         #     new_left_bound=xrange[0]+0.5*diameter-0.25*np.sqrt(2)*diameter
@@ -70,6 +71,7 @@ class ML:
         loc=loc.reshape([-1,2])
         return np.array([num_grid_x,num_grid_y]),loc
     
+    #ML + hierarchical grid search
     def ML_grid2(self,xrange,yrange,phase_obs,arr,lamb,resolution,num_ite, reso_factor, filepath,flag_plot=True):
         
         N=arr.shape[0]
