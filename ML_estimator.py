@@ -125,7 +125,7 @@ class ML:
                 ax.add_patch(plt.Rectangle((a-2,b-2), 5,5, color="blue", fill=False, linewidth=1))
                 plt.title(r'Searching result with $s_{grid}$' +rf'= {reso/lamb}$\lambda$,ite={k+1}')
 
-                plt.savefig(filepath+f'/hierarchical_ML_Example_Result_{k+1}.png')
+                plt.savefig(filepath+f'/HGS_example/hierarchical_ML_Example_Result_{k+1}.png')
             
             #increase the resolution and search within the best grid
             
