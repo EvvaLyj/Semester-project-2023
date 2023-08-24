@@ -1,0 +1,112 @@
+q=0.02180232558139535[m]=0.0625wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=1.0q
+positon noise [dB]=0
+error_x var:0.059353812942822125,error_y var:0.060199543997713205
+estimated covariance between error_x and error_y:-0.002436161154217238
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+q=0.02180232558139535[m]=0.0625wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=1.0q
+positon noise [dB]=10
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+error_x var:0.053910419638206995,error_y var:0.053671295738192855
+estimated covariance between error_x and error_y:-0.001517823406483282
+q=0.02180232558139535[m]=0.0625wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=1.0q
+positon noise [dB]=20
+error_x var:0.03595416778600288,error_y var:0.039708366745669466
+estimated covariance between error_x and error_y:0.00018585137267873637
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+q=0.02180232558139535[m]=0.0625wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=1.0q
+positon noise [dB]=30
+error_x var:0.020675423780025477,error_y var:0.03795882046657441
+estimated covariance between error_x and error_y:0.0005505965309227584
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+q=0.0436046511627907[m]=0.125wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=0.5q
+positon noise [dB]=0
+error_x var:0.1105246996719723,error_y var:0.11692147093988735
+estimated covariance between error_x and error_y:-0.008018298327118884
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+q=0.0436046511627907[m]=0.125wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=0.5q
+positon noise [dB]=10
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+error_x var:0.08703170868113491,error_y var:0.08939228119715671
+estimated covariance between error_x and error_y:-0.0020552565447642325
+q=0.0436046511627907[m]=0.125wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=0.5q
+positon noise [dB]=20
+error_x var:0.04097994479905832,error_y var:0.056448688763021775
+estimated covariance between error_x and error_y:0.0008492553989864584
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+q=0.0436046511627907[m]=0.125wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=0.5q
+positon noise [dB]=30
+error_x var:0.024702155214986993,error_y var:0.047594853478625174
+estimated covariance between error_x and error_y:0.0009264237466094858
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+q=0.0872093023255814[m]=0.25wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=0.25q
+positon noise [dB]=0
+error_x var:0.19832714221076933,error_y var:0.214637991054826
+estimated covariance between error_x and error_y:-0.016123847028440247
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+q=0.0872093023255814[m]=0.25wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=0.25q
+positon noise [dB]=10
+error_x var:0.1088053235016987,error_y var:0.11467377239651147
+estimated covariance between error_x and error_y:0.0004518434063298262
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+q=0.0872093023255814[m]=0.25wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=0.25q
+positon noise [dB]=20
+error_x var:0.04264076046781248,error_y var:0.057520408966140774
+estimated covariance between error_x and error_y:0.0010132576332167764
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+q=0.0872093023255814[m]=0.25wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=0.25q
+positon noise [dB]=30
+error_x var:0.025419524991370242,error_y var:0.048453804850342196
+estimated covariance between error_x and error_y:0.0009773389853236483
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+q=0.1744186046511628[m]=0.5wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=0.125q
+positon noise [dB]=0
+error_x var:0.30866501263163665,error_y var:0.3164560649642164
+estimated covariance between error_x and error_y:-0.014405573968024596
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+q=0.1744186046511628[m]=0.5wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=0.125q
+positon noise [dB]=10
+error_x var:0.1161514725672148,error_y var:0.11869025096007482
+estimated covariance between error_x and error_y:0.0013167698836576973
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+q=0.1744186046511628[m]=0.5wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=0.125q
+positon noise [dB]=20
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+error_x var:0.04158903856349439,error_y var:0.057768680633757036
+estimated covariance between error_x and error_y:0.0009182882644732485
+q=0.1744186046511628[m]=0.5wavelength
+searchfactor:3
+grid_size:0.0625wavelength,grid_size=0.125q
+positon noise [dB]=30
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+error_x var:0.025096684666713658,error_y var:0.04915465233529522
+estimated covariance between error_x and error_y:0.0009581011568486381
